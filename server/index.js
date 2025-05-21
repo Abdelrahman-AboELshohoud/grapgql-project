@@ -7,10 +7,12 @@ const schema = require("./schema/schema");
 const connectDB = require("./config/db");
 const app = express();
 const PORT = process.env.PORT || 3000;
-
+const cors = require("cors");
 connectDB();
 
+app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 app.use(
   "/graphql",
